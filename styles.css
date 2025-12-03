@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    background-color: #f4f4f4;
+    margin-top: 50px;
+}
+
+.contenedor {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    min-width: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #eee;
+    margin: 5px 0;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#btn-agregar {
+    padding: 15px 25px;  
+    font-size: 18px;    
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;    
+    font-weight: bold;  
+    transition: background 0.3s; 
+}
+
+#btn-agregar:hover {
+    background-color: #218838; 
+}
+
+.btn-borrar {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.entrada-tarea {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+}
+
+.input-tarea {
+    padding: 15px;
+    font-size: 18px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    flex-grow: 1;
+    outline: none;
+}
+
+#input-tarea:focus {
+    border-color: #007bff; 
+}
+
+.tarea-seleccionada {
+    border: 2px solid #007bff; 
+    background-color: #e9f5ff; 
+    transition: all 0.2s;
+}
+

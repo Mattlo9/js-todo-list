@@ -1,6 +1,6 @@
 # To-Do List en JavaScript 
 
-Aplicación web para gestión de tareas que permite crear, borrar y almacenar datos persistentemente.
+Una simple aplicación web para gestión de tareas que permite crear, borrar y almacenar datos persistentemente.
 
 ## Funcionalidades
 - **Agregar tareas:** Validación de input para evitar tareas vacías.

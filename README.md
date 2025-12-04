@@ -1,20 +1,20 @@
-# To-Do List en JavaScript
+# To-Do List en JavaScript 
 
-Un proyecto simple para gestionar tareas diarias, creado para practicar manipulación del DOM y lógica de JavaScript.
+Aplicación web para gestión de tareas que permite crear, borrar y almacenar datos persistentemente.
 
-## Funcionalidades:
-- Agregar tareas dinámicamente.
-- Marcar tareas (cambio de estilo visual).
-- Eliminar tareas completadas.
-- Diseño responsivo y amigable.
+## Funcionalidades
+- **Agregar tareas:** Validación de input para evitar tareas vacías.
+- **Persistencia de datos:** Uso de `localStorage` para que las tareas no se borren al recargar.
+- **Borrado individual:** Elimina tareas del DOM y de la memoria.
+- **Borrado total:** Botón para eliminar todas las tareas con confirmación de seguridad.
+
+## Lo que aprendí
+- Manipulación del DOM (crear elementos `li` y `button` dinámicamente).
+- Modularización de funciones para reutilizar código (`crearTarea`).
+- Solución de problemas de Scope (alcance de variables).
+- Manejo de Eventos (`click`, `keypress`).
 
 ## Tecnologías
 - HTML5
-- CSS3 (Flexbox)
-- JavaScript (ES6)
-
-## Captura de pantalla
-![Vista previa del proyecto](img/img1.png)
-
-## Demo en vivo
-[Ver proyecto aquí](https://mattlo9.github.io/js-todo-list/)
+- CSS3 (Flexbox y diseño responsivo básico)
+- JavaScript (Vanilla)

@@ -1,6 +1,7 @@
 const input = document.getElementById('input-tarea')
 const boton = document.getElementById('btn-agregar')
 const lista = document.getElementById('lista-tareas')
+const btnBorrarTodo = document.getElementById('btn-borrar-todo')
 
 cargarDatos()
 boton.addEventListener('click', agregarTarea)
@@ -9,7 +10,19 @@ input.addEventListener('keypress', function(evento) {
     if (evento.key == 'Enter') {
         agregarTarea()
     }
-    
+})
+
+btnBorrarTodo.addEventListener('click', function() {
+
+    if (lista.children.length === 0) {
+        return
+    }
+    const confirmacion = confirm("¿Estas seguro que deseas borrar todas las tareas?")
+
+    if (confirmacion) {
+        lista.innerHTML = ''
+        localStorage.removeItem('misTareas')
+    }
 })
 
 
@@ -55,7 +68,6 @@ function crearTarea(textoUsuario) {
 
     
 }
-
 
 function guardarDatos() {
     const tareasArr = [];

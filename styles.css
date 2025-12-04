@@ -33,12 +33,9 @@ li {
     justify-content: space-between;
     align-items: center;
 }
-
-#btn-agregar {
+.boton {
     padding: 15px 25px;  
     font-size: 18px;    
-    background-color: #28a745; 
-    color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;    
@@ -46,17 +43,38 @@ li {
     transition: background 0.3s; 
 }
 
+#btn-agregar {
+    background-color: #28a745; 
+    color: white;
+}
+
 #btn-agregar:hover {
     background-color: #218838; 
+}
+
+.boton-borrar {
+    background: red;
+    color: white;
 }
 
 .btn-borrar {
     background: red;
     color: white;
+    font-weight: bold;
     border: none;
-    padding: 5px 10px;
+    border-radius: 50%;
+    padding: 9px;
     cursor: pointer;
-    border-radius: 4px;
+}
+
+.boton-borrarTarea {
+    padding: 15px 25px;  
+    font-size: 18px;    
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;    
+    font-weight: bold;  
+    transition: background 0.3s; 
 }
 
 .entrada-tarea {
@@ -85,3 +103,12 @@ li {
     transition: all 0.2s;
 }
 
+.centrar-boton {
+    display: flex;
+    align-items: center;
+}
+
+.contenedor-borrar {
+    text-align: center; 
+    margin-top: 20px;   
+}

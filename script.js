@@ -2,48 +2,64 @@ const input = document.getElementById('input-tarea')
 const boton = document.getElementById('btn-agregar')
 const lista = document.getElementById('lista-tareas')
 
-function agregarTarea() {
-    const textoUsuario = input.value //Esto es para obtener la informacion del input
+cargarDatos()
+boton.addEventListener('click', agregarTarea)
 
-    //Validacion
+input.addEventListener('keypress', function(evento) {
+    if (evento.key == 'Enter') {
+        agregarTarea()
+    }
+    
+})
+
+
+function agregarTarea() {
+    const textoUsuario = input.value 
+
     if (textoUsuario === '') {
         alert("Por favor escriba una tarea")
         return
+    } else {
+        
     }
 
+    crearTarea(textoUsuario)
+    input.value = ""
+ 
+}
 
-    //Creamos el elemento (Aun no se pone dentro del Ul)
+function crearTarea(textoUsuario) {
+   //Tarea
     const nuevaTarea = document.createElement('li')
-    nuevaTarea.textContent = textoUsuario // Lo llenamos con la informacion del usuario
+    nuevaTarea.textContent = textoUsuario 
 
-    //Aplica la clase .tarea-seleccionada cuando se hace click a la tarea
     nuevaTarea.addEventListener('click', function() {
         nuevaTarea.classList.toggle('tarea-seleccionada')
     })
 
-    //Se crea el elemento boton
+    //Boton
     const botonBorrar = document.createElement('button');
-    botonBorrar.innerText = "X" //Se le agrega la X
-    botonBorrar.classList.add('btn-borrar') //Se le agrega la clase para los estilos
+    botonBorrar.innerText = "X" 
+    botonBorrar.classList.add('btn-borrar') 
 
-    //Si se le da click al botonBorrar, se elimina el li
     botonBorrar.addEventListener('click', function() {
         lista.removeChild(nuevaTarea)
         guardarDatos()
+        
     })
 
-    //Se agrega el boton borrar dentro del li
+    //Agregamos el boton y la tarea 
     nuevaTarea.appendChild(botonBorrar)
-    lista.appendChild(nuevaTarea) //Se agrega el li al ul
+    lista.appendChild(nuevaTarea) 
     guardarDatos()
 
-    input.value = ""
-
+    
 }
+
 
 function guardarDatos() {
     const tareasArr = [];
-    const tareasHTML = document.querySelectorAll('li')
+    const tareasHTML = document.querySelectorAll('li') //Selecciona los elementos 'li'
 
     tareasHTML.forEach(function(tareaHTML) {
         tareasArr.push(tareaHTML.firstChild.textContent)
@@ -58,28 +74,7 @@ function cargarDatos() {
         const tareasArr = JSON.parse(tareasGuardadas)
 
         tareasArr.forEach(function(textoTarea) {
-            const nuevaTarea = document.createElement('li')
-            nuevaTarea.textContent = textoTarea;
-
-            const botonBorrar = document.createElement('button')
-            botonBorrar.innerHTML = 'X'
-            botonBorrar.classList.add('btn-borrar')
-
-            botonBorrar.addEventListener('click', function() {
-                lista.removeChild(nuevaTarea)
-                guardarDatos()
-            })
-            nuevaTarea.appendChild(botonBorrar)
-            lista.appendChild(nuevaTarea)
+            crearTarea(textoTarea)
         })
     }
 }
-
-cargarDatos()
-boton.addEventListener('click', agregarTarea)
-
-input.addEventListener('keypress', function(evento) {
-    if (evento.key == 'Enter') {
-        agregarTarea()
-    }
-})

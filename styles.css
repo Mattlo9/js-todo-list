@@ -1,114 +1,69 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    justify-content: center;
-    background-color: #f4f4f4;
-    margin-top: 50px;
+    font-family: "Sora", sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin: 0;
+    min-height: 100vh;
 }
 
-.contenedor {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    min-width: 300px;
+.app-layout {
+    background-color: rgb(249, 250, 251);
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    text-align: center;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background: #eee;
-    margin: 5px 0;
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.boton {
-    padding: 15px 25px;  
-    font-size: 18px;    
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;    
-    font-weight: bold;  
-    transition: background 0.3s; 
-}
-
-#btn-agregar {
-    background-color: #28a745; 
-    color: white;
-}
-
-#btn-agregar:hover {
-    background-color: #218838; 
-}
-
-.boton-borrar {
-    background: red;
-    color: white;
-}
-
-.btn-borrar {
-    background: red;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 50%;
-    padding: 9px;
-    cursor: pointer;
-}
-
-.boton-borrarTarea {
-    padding: 15px 25px;  
-    font-size: 18px;    
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;    
-    font-weight: bold;  
-    transition: background 0.3s; 
-}
-
-.entrada-tarea {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-
+.tasks-layout {
+    padding: 1rem;
 }
 
 .input-tarea {
     padding: 15px;
-    font-size: 18px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
+    font-size: 17px;
+    border: transparent;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     flex-grow: 1;
     outline: none;
+    width: 90%;
 }
 
-#input-tarea:focus {
-    border-color: #007bff; 
+ul {
+    padding: 0;
+    margin: 0;
 }
 
-.tarea-seleccionada {
-    border: 2px solid #007bff; 
-    background-color: #e9f5ff; 
-    transition: all 0.2s;
+li {
+    list-style: none;
 }
 
-.centrar-boton {
-    display: flex;
+h1 {
+    margin-bottom: 1rem;
+}
+
+.boton {
+    font-family: "Sora", sans-serif;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: transparent;
+    width: 100%;
+    text-align: left;
+}
+
+.boton:hover {
+    background-color: #e2e6ea;
+    font-weight: bold;
+}
+
+.tarea {
     align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    width: 93%;
 }
 
-.contenedor-borrar {
-    text-align: center; 
-    margin-top: 20px;   
+.texto-tarea {
+    margin-left: 1rem;
 }

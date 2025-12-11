@@ -1,92 +1,78 @@
 const input = document.getElementById('input-tarea')
-const boton = document.getElementById('btn-agregar')
 const lista = document.getElementById('lista-tareas')
-const btnBorrarTodo = document.getElementById('btn-borrar-todo')
 
 cargarDatos()
-boton.addEventListener('click', agregarTarea)
-
-input.addEventListener('keypress', function(evento) {
+input.addEventListener('keypress', function (evento) {
     if (evento.key == 'Enter') {
         agregarTarea()
     }
 })
 
-btnBorrarTodo.addEventListener('click', function() {
-
-    if (lista.children.length === 0) {
-        return
-    }
-    const confirmacion = confirm("¿Estas seguro que deseas borrar todas las tareas?")
-
-    if (confirmacion) {
-        lista.innerHTML = ''
-        localStorage.removeItem('misTareas')
-    }
-})
-
-
 function agregarTarea() {
-    const textoUsuario = input.value 
+    const textoUsuario = input.value
 
     if (textoUsuario === '') {
         alert("Por favor escriba una tarea")
         return
-    } else {
-        
     }
-
     crearTarea(textoUsuario)
+    guardarDatos()
     input.value = ""
- 
 }
 
-function crearTarea(textoUsuario) {
-   //Tarea
+function crearTarea(textoUsuario, estaRealizada = false) {
     const nuevaTarea = document.createElement('li')
-    nuevaTarea.textContent = textoUsuario 
 
-    nuevaTarea.addEventListener('click', function() {
-        nuevaTarea.classList.toggle('tarea-seleccionada')
-    })
+    const casilla = document.createElement('input')
+    casilla.type = 'checkbox'
+    casilla.checked = estaRealizada
 
-    //Boton
-    const botonBorrar = document.createElement('button');
-    botonBorrar.innerText = "X" 
-    botonBorrar.classList.add('btn-borrar') 
 
-    botonBorrar.addEventListener('click', function() {
-        lista.removeChild(nuevaTarea)
+    const texto = document.createElement('span')
+    texto.textContent = textoUsuario
+
+    if (estaRealizada) {
+        texto.style.textDecoration = 'line-through'
+    }
+
+
+    nuevaTarea.appendChild(casilla)
+    nuevaTarea.appendChild(texto)
+
+    casilla.addEventListener('change', function (){
+        if (casilla.checked) {
+            texto.style.textDecoration = 'line-through'
+        } else {
+            texto.style.textDecoration = 'none'
+        }
         guardarDatos()
-        
     })
 
-    //Agregamos el boton y la tarea 
-    nuevaTarea.appendChild(botonBorrar)
-    lista.appendChild(nuevaTarea) 
-    guardarDatos()
-
-    
+    texto.classList.add('texto-tarea')
+    nuevaTarea.classList.add('tarea')
+    lista.appendChild(nuevaTarea)
 }
 
 function guardarDatos() {
-    const tareasArr = [];
-    const tareasHTML = document.querySelectorAll('li') //Selecciona los elementos 'li'
-
-    tareasHTML.forEach(function(tareaHTML) {
-        tareasArr.push(tareaHTML.firstChild.textContent)
+    const listaTareas = document.querySelectorAll('.tarea')
+    const tareasArray = []
+    listaTareas.forEach(tarea => {
+        const texto = tarea.querySelector('span').textContent
+        const estaMarcada = tarea.querySelector('input').checked
+        tareasArray.push({
+            texto: texto,
+            estaMarcada: estaMarcada
+        })
     })
-
-    localStorage.setItem('misTareas', JSON.stringify(tareasArr))
+    localStorage.setItem('tareas', JSON.stringify(tareasArray))
 }
 
 function cargarDatos() {
-    const tareasGuardadas = localStorage.getItem('misTareas')
+    const tareasGuardadas = localStorage.getItem('tareas')
     if (tareasGuardadas) {
-        const tareasArr = JSON.parse(tareasGuardadas)
-
-        tareasArr.forEach(function(textoTarea) {
-            crearTarea(textoTarea)
+        const tareasArray = JSON.parse(tareasGuardadas)
+        tareasArray.forEach(tarea => {
+            crearTarea(tarea.texto,tarea.estaMarcada)
         })
     }
 }

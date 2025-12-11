@@ -1,20 +1,35 @@
-# To-Do List en JavaScript 
+# To-Do List App 
 
-Una simple aplicación web para gestión de tareas que permite crear, borrar y almacenar datos persistentemente.
+Una aplicación web de gestión de tareas rápida y persistente, desarrollada con JavaScript Vanilla (sin frameworks). Permite organizar tareas diarias y mantiene el estado de las mismas incluso después de recargar la página.
 
-## Funcionalidades
-- **Agregar tareas:** Validación de input para evitar tareas vacías.
-- **Persistencia de datos:** Uso de `localStorage` para que las tareas no se borren al recargar.
-- **Borrado individual:** Elimina tareas del DOM y de la memoria.
-- **Borrado total:** Botón para eliminar todas las tareas con confirmación de seguridad.
+##  Características (Novedades)
 
-## Lo que aprendí
-- Manipulación del DOM (crear elementos `li` y `button` dinámicamente).
-- Modularización de funciones para reutilizar código (`crearTarea`).
-- Solución de problemas de Scope (alcance de variables).
-- Manejo de Eventos (`click`, `keypress`).
+- **Persistencia de Datos Inteligente:** Uso de `localStorage` para guardar no solo las tareas, sino su estado (completada/pendiente).
+- **Interfaz Renovada:** Diseño moderno utilizando **CSS Grid** para una distribución responsiva (Sidebar + Panel de tareas).
+- **Tipografía:** Integración de la fuente 'Sora' para mejor legibilidad.
+- **Feedback Visual:** Tachado automático de tareas al marcar el checkbox.
 
-## Tecnologías
-- HTML5
-- CSS3 (Flexbox y diseño responsivo básico)
-- JavaScript (Vanilla)
+##  Tecnologías Usadas
+
+- **HTML5:** Estructura semántica.
+- **CSS3:** Variables, Grid Layout, y Flexbox.
+- **JavaScript (ES6):** Manipulación del DOM y lógica de estado.
+
+##  Cómo funciona la lógica (Technical Deep Dive)
+
+Recientemente se refactorizó el sistema de guardado. Originalmente se guardaba un array simple de strings. Ahora, para soportar el estado de los checkboxes, se implementó un **Array de Objetos**.
+
+**Estructura de datos en LocalStorage:**
+
+```json
+[
+  {
+    "texto": "Aprender JavaScript",
+    "realizada": true
+  },
+  {
+    "texto": "Hacer commit de los cambios",
+    "realizada": false
+  }
+]
+
